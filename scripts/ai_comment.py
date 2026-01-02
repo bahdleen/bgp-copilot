@@ -1,6 +1,8 @@
 import json, requests
+import os
 
-URL = "https://ai-api.edjenuwahome.uk/v1/analyze"
+URL = os.getenv("AI_API_URL", "[API excluded by author — insert your endpoint here]")
+
 
 report = json.load(open("bgp_report.json"))
 

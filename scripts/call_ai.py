@@ -1,8 +1,9 @@
 import json
 import time
 import requests
+import os
+URL = os.getenv("AI_API_URL", "[API excluded by author — insert your endpoint here]")
 
-URL = "https://ai-api.edjenuwahome.uk/v1/analyze"
 
 def extract_between_markers(text: str):
     start = text.find("BEGIN_JSON")
