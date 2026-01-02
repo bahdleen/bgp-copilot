@@ -1,0 +1,35 @@
+{
+  "timestamp_utc": "2026-01-02T12:32:41.634262+00:00",
+  "issue_summary": "BGP is Established; loopbacks exchanged successfully.",
+  "bgp_state_detected": "Established (NX-OS AS65001 <-> IOS-XE AS65002), PfxRcd=1 both sides",
+  "most_likely_root_cause": "No issue detected (session Established and routes exchanged)",
+  "confidence": 1.0,
+  "evidence": [
+    "NX-OS: show bgp ipv4 unicast summary shows State/PfxRcd 1 for neighbor 10.0.0.2",
+    "NX-OS: show bgp ipv4 unicast shows 2.2.2.2/32 learned via 10.0.0.2",
+    "IOS-XE: show ip bgp summary shows State/PfxRcd 1 for neighbor 10.0.0.1",
+    "IOS-XE: show ip route 1.1.1.1 shows known via bgp with next-hop 10.0.0.1"
+  ],
+  "next_commands_nxos": [
+    "show bgp ipv4 unicast summary",
+    "show bgp ipv4 unicast",
+    "show bgp ipv4 unicast neighbors 10.0.0.2",
+    "show ip route 2.2.2.2/32",
+    "ping 2.2.2.2 source 1.1.1.1"
+  ],
+  "next_commands_iosxe": [
+    "show ip bgp summary",
+    "show ip bgp",
+    "show ip bgp neighbors 10.0.0.1",
+    "show ip route 1.1.1.1",
+    "ping 1.1.1.1 source 2.2.2.2"
+  ],
+  "safe_fix_steps": [
+    "No fix required (healthy state). Optional: set router-id to loopback on IOS-XE for stability."
+  ],
+  "verification_steps": [
+    "Confirm BGP remains Established (no flaps) on both devices.",
+    "Confirm 1.1.1.1/32 and 2.2.2.2/32 remain present in BGP table and routing table.",
+    "Ping loopbacks both ways using source loopback."
+  ]
+}

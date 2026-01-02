@@ -1,0 +1,6 @@
+{
+  "input": {
+    "task": "Return ONLY JSON in summary",
+    "message": "Return ONLY valid JSON. No prose. No markdown. No extra keys.\n\nJSON schema:\n{\n  \"issue_summary\": \"string\",\n  \"bgp_state_detected\": \"string\",\n  \"most_likely_root_cause\": \"string\",\n  \"confidence\": 0.0,\n  \"evidence\": [\"string\"],\n  \"next_commands_nxos\": [\"string\"],\n  \"next_commands_iosxe\": [\"string\"],\n  \"safe_fix_steps\": [\"string\"],\n  \"verification_steps\": [\"string\"]\n}\n\nInterpretation rules:\n- If BGP is Established on both sides AND prefixes are exchanged, then this is a HEALTHY state.\n- In a healthy state: most_likely_root_cause must be \"No issue detected (session Established and routes exchanged)\" and confidence must be >= 0.9.\n- issue_summary must be a short 1-line status.\n\nRaw facts:\n- eBGP: NX-OS ASN 65001 <-> IOS-XE ASN 65002\n- Prefix exchange: NX-OS has 2.2.2.2/32 via 10.0.0.2; Router has 1.1.1.1/32 via 10.0.0.1\n- Router internet reachability confirmed (ping 8.8.8.8 success)\n\nNow output the JSON object."
+  }
+}

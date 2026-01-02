@@ -1,0 +1,6 @@
+{
+  "input": {
+    "task": "BGP report JSON",
+    "message": "Return ONLY JSON.\n\nSchema:\n{\"issue_summary\":\"string\",\"bgp_state_detected\":\"string\",\"most_likely_root_cause\":\"string\",\"confidence\":0.0,\"evidence\":[\"string\"],\"next_commands_nxos\":[\"string\"],\"next_commands_iosxe\":[\"string\"],\"verification_steps\":[\"string\"]}\n\nData:\nNX-OS: State/PfxRcd 1; has 1.1.1.1/32 local; learns 2.2.2.2/32 via 10.0.0.2\nRouter: State/PfxRcd 1; learns 1.1.1.1/32 via 10.0.0.1; has 2.2.2.2/32 local\n\nReturn JSON now."
+  }
+}
